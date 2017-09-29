@@ -1,0 +1,34 @@
+{
+  "name": "MapIt",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Locate a place in map",
+  "icons": { 
+    "128": "images/icon.png"
+  },
+
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  },
+
+  //"options_page": "options.htm",
+  //"background": { "scripts": ["background.js"] },
+  
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "geolocation"
+  ],
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": [ "selection.js" ],
+    "run_at": "document_start",
+    "all_frames": true
+  }],
+
+  "content_security_policy": "script-src 'self' https://maps.googleapis.com; object-src 'self'"
+
+}
